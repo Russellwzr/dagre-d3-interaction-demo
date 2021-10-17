@@ -1,0 +1,388 @@
+<!doctype html>
+
+<meta charset="utf-8">
+<title>Demo</title>
+
+<link rel="stylesheet" href="css/demo.css">
+<script src="js/d3.v5.js"></script>
+<script src="js/dagre-d3.js"></script>
+
+<!-- Pull in JQuery dependencies -->
+<link rel="stylesheet" href="css/tipsy.css">
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="js/tipsy.js"></script>
+
+<h1>Demo</h1>
+
+<style id="css">
+text {
+  font-weight: 300;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+  font-size: 14px;
+}
+
+.node rect {
+  stroke: #333;
+}
+
+.edgePath path {
+  stroke: #333;
+  fill: #333;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  pointer-events: none;
+}
+
+/* This styles the title of the tooltip */
+.tipsy .name {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #bec0c2;
+  margin: 0;
+}
+
+/* This styles the body of the tooltip */
+.tipsy .description {
+  font-size: 1.2em;
+}
+</style>
+
+<svg width=1000 height=1000></svg>
+
+<script id="js">
+
+    // Create a new directed graph
+    var g = new dagreD3.graphlib.Graph({compound:true})
+        .setGraph({rankdir:'BT'})
+        .setDefaultEdgeLabel(function() { return {}; });
+
+    d3.json('/json_data/simple_model_hierarchy.json').then(data=>{
+
+        //const nodes = data.children.map(d => Object.create(d));
+        //const links = data.relation.map(d => Object.create(d));
+        //const nodes = data.children;
+        //const links = data.relation;
+
+        // Find node's key according to its id
+        //let findKey = (obj,value, compare = (a, b) => a === b) =>{
+        //    return Object.keys(obj).find(k => compare(obj[k], value))
+        //}
+
+        var storeApp = [];
+		
+		console.log(data)
+
+        // Add states to the graph, set labels, and style
+        Object.keys(data.children).forEach(function(index) {
+            //console.log(index);
+            let idx = data.children[index].id;
+            storeApp[idx] = data.children[index];
+            let value = new Object();
+            value.label = data.children[index].name;
+            value.rx = value.ry = 5;
+            value.open=false;
+            value.PointId = idx;
+            if(data.children[index].children.length>0){
+                value.is_layer=1;
+                value.style = "fill:#18b459";
+            }
+            else{
+                value.is_layer=0;
+                value.style = "fill:#fff";
+            }
+            g.setNode(idx, value);
+        });
+
+        // Set up the edges
+        Object.keys(data.relation).forEach(function(index) {
+            g.setEdge(data.relation[index].source,data.relation[index].target,{label:"",curve: d3.curveBasis });
+        });
+
+        // Create the render
+        var render = new dagreD3.render();
+        // Set up an SVG group so that we can translate the final graph.
+        var svg = d3.select("svg"),
+        inner = svg.append("g");
+
+        // Set up zoom support
+        var zoom = d3.zoom()
+        .on("zoom", function() {
+          inner.attr("transform", d3.event.transform);
+        });
+        svg.call(zoom);
+
+        // Simple function to style the tooltip for the given node.
+        var styleTooltip = function(name) {
+            return "<p class='name'>" + name + "</p>";
+        };
+
+        // Run the renderer. This is what draws the final graph.
+        render(inner, g);
+        inner.selectAll("g.node")
+        .attr("title", function(v) { return styleTooltip( g.node(v).label) })
+        .each(function(v) { $(this).tipsy({ gravity: "w", opacity: 1, html: true }); });
+
+        function clickevent(){
+            svg.selectAll("g.node")
+                .on("click", function(index){
+                    if(g.node(index).is_layer==1&&g.node(index).open==false){
+
+                        let ParentGroup = g.node(index).label;
+                        console.log(ParentGroup);
+                        g.setNode(ParentGroup, {label:ParentGroup,width:0,height:0,style: 'fill: #d3d7e8'});
+
+                        let VirtualNodeIdx = ParentGroup + "Virtual";
+                        g.setNode(VirtualNodeIdx,{label:VirtualNodeIdx,width:0,height:0});
+
+                        g.node(index).open=true;
+                        g.node(index).width=0;
+                        g.node(index).height=0;
+                        console.log(g.node(index));
+                        let curid = g.node(index).PointId;
+
+                        //console.log(curid);
+                        //console.log(g.outEdges(curid));
+
+                        //a->OutEdges => VirtualNodeIdx->OutEdges
+                        for(let it=0;it<g.outEdges(curid).length;it++){
+                            let u = g.outEdges(curid)[0].v;
+                            let v = g.outEdges(curid)[0].w;
+                            g.removeEdge(u,v);
+                            g.setEdge(VirtualNodeIdx,v);
+                        }
+
+                        let indegree = new Map();
+                        let outdegree = new Map();
+
+                        Object.keys(storeApp[curid].children).forEach(function(i) {
+                            if(!(typeof(storeApp[curid].children[i])=="undefined")){
+                                let idx = storeApp[curid].children[i].id;
+                                if(typeof(storeApp[idx] == "undefined")&&idx!=curid){
+                                    storeApp[idx] = storeApp[curid].children[i];
+                                    let value = new Object();
+                                    value.label = storeApp[idx].name;
+                                    value.rx = value.ry = 5;
+                                    value.open=false;
+                                    value.PointId = idx;
+                                    if(storeApp[idx].children.length>0){
+                                        value.is_layer=1;
+                                        value.style = "fill:#18b459";
+                                    }else{
+                                        value.is_layer=0;
+                                        value.style = "fill:#fff";
+                                    }
+                                    if(value.label==""){
+                                        value.label = "no_name";
+                                    }
+                                    g.setNode(idx, value);
+                                    g.setParent(idx, ParentGroup);
+                                    indegree.set(idx,0);
+                                    outdegree.set(idx,0);
+                                }
+                            }
+                        });
+
+                        Object.keys(storeApp[curid].relation).forEach(function(i) {
+
+                            let from = storeApp[curid].relation[i].source;
+                            let to = storeApp[curid].relation[i].target;
+
+                            if(from>0&&to>0){
+                                let val1 = 1,val2 = 1;
+                                //update in-degree
+                                if(indegree.has(to)==true){
+                                    val1 = indegree.get(to) + 1;
+                                }
+                                indegree.set(to,val1)
+                                //update out-degree
+                                if(outdegree.has(from)==true){
+                                    val2 = outdegree.get(from) + 1;
+                                }
+                                outdegree.set(from,val2)
+                                g.setEdge(from, to, {label: "", curve: d3.curveBasis});
+                            }
+
+                        });
+
+                        let minkey=-1,minnum=999999;
+                        for(let key of indegree.keys()){
+                            if(indegree.get(key)<minnum&&outdegree.get(key)>=1){
+                                minnum = indegree.get(key);
+                                minkey = key;
+                            }
+                        }
+                        if(minkey==-1){
+                            for(let key of indegree.keys()){
+                                if(indegree.get(key)<minnum){
+                                    minnum = indegree.get(key);
+                                    minkey = key;
+                                }
+                            }
+                        }
+                        g.setEdge(curid, minkey, {label: "", curve: d3.curveBasis});
+
+                        minkey = -1,minnum = 999999;
+                        for(let key of outdegree.keys()){
+                            if(outdegree.get(key)<minnum&&indegree.get(key)>=1){
+                                minnum = outdegree.get(key);
+                                minkey = key;
+                            }
+                        }
+                        if(minkey==-1){
+                            for(let key of outdegree.keys()){
+                                if(outdegree.get(key)<minnum){
+                                    minnum = outdegree.get(key);
+                                    minkey = key;
+                                }
+                            }
+                        }
+                        g.setEdge(minkey, VirtualNodeIdx, {label: "", curve: d3.curveBasis});
+
+                        indegree.clear();
+                        outdegree.clear();
+
+                        render(inner,g);
+
+                        clickevent();
+
+                        inner.selectAll("g.node")
+                            .attr("title", function(v) { return styleTooltip(g.node(v).label) })
+                            .each(function(v) { $(this).tipsy({ gravity: "w", opacity: 1, html: true }); });
+                    }
+
+                });
+        }
+
+        clickevent();
+
+        /*
+        svg.selectAll("g.node")
+        .on("click", function(index){
+         if(g.node(index).is_layer==1&&g.node(index).open==false){
+
+             let ParentGroup = g.node(index).label;
+             g.setNode(ParentGroup, {label:ParentGroup,width:0,height:0,style: 'fill: #d3d7e8'});
+
+             let VirtualNodeIdx = ParentGroup + "Virtual";
+             g.setNode(VirtualNodeIdx,{label:VirtualNodeIdx,width:0,height:0});
+
+             g.node(index).open=true;
+             g.node(index).width=0;
+             g.node(index).height=0;
+             let curid = g.node(index).PointId;
+
+             //a->OutEdges => VirtualNodeIdx->OutEdges
+             for(let it=0;it<g.outEdges(curid).length;it++){
+                 let u = g.outEdges(curid)[0].v;
+                 let v = g.outEdges(curid)[0].w;
+                 g.removeEdge(u,v);
+                 g.setEdge(VirtualNodeIdx,v);
+             }
+
+             let indegree = new Map();
+             let outdegree = new Map();
+
+             Object.keys(storeApp[curid].children).forEach(function(i) {
+                 if(!(typeof(storeApp[curid].children[i])=="undefined")){
+                     let idx = storeApp[curid].children[i].id;
+                     if(typeof(storeApp[idx] == "undefined")&&idx!=curid){
+                         storeApp[idx] = storeApp[curid].children[i];
+                         let value = new Object();
+                         value.label = storeApp[idx].name;
+                         value.rx = value.ry = 5;
+                         value.open=false;
+                         value.PointId = idx;
+                         if(storeApp[idx].children.length>0){
+                             value.is_layer=1;
+                             value.style = "fill:#18b459";
+                         }else{
+                             value.is_layer=0;
+                             value.style = "fill:#fff";
+                         }
+                         if(value.label==""){
+                             value.label = "no_name";
+                         }
+                         g.setNode(idx, value);
+                         g.setParent(idx, ParentGroup);
+                         indegree.set(idx,0);
+                         outdegree.set(idx,0);
+                     }
+                 }
+             });
+
+             Object.keys(storeApp[curid].relation).forEach(function(i) {
+
+                 let from = storeApp[curid].relation[i].source;
+                 let to = storeApp[curid].relation[i].target;
+
+                 if(from>0&&to>0){
+                     let val1 = 1,val2 = 1;
+                     //update in-degree
+                     if(indegree.has(to)==true){
+                         val1 = indegree.get(to) + 1;
+                     }
+                     indegree.set(to,val1)
+                     //update out-degree
+                     if(outdegree.has(from)==true){
+                         val2 = outdegree.get(from) + 1;
+                     }
+                     outdegree.set(from,val2)
+                     g.setEdge(from, to, {label: "", curve: d3.curveBasis});
+                 }
+
+             });
+
+             let minkey=-1,minnum=999999;
+             for(let key of indegree.keys()){
+                if(indegree.get(key)<minnum&&outdegree.get(key)>=1){
+                    minnum = indegree.get(key);
+                    minkey = key;
+                }
+             }
+             if(minkey==-1){
+                 for(let key of indegree.keys()){
+                     if(indegree.get(key)<minnum){
+                         minnum = indegree.get(key);
+                         minkey = key;
+                     }
+                 }
+             }
+             g.setEdge(curid, minkey, {label: "", curve: d3.curveBasis});
+
+             minkey = -1,minnum = 999999;
+             for(let key of outdegree.keys()){
+                 if(outdegree.get(key)<minnum&&indegree.get(key)>=1){
+                     minnum = outdegree.get(key);
+                     minkey = key;
+                 }
+             }
+             if(minkey==-1){
+                 for(let key of outdegree.keys()){
+                     if(outdegree.get(key)<minnum){
+                         minnum = outdegree.get(key);
+                         minkey = key;
+                     }
+                 }
+             }
+             g.setEdge(minkey, VirtualNodeIdx, {label: "", curve: d3.curveBasis});
+
+             indegree.clear();
+             outdegree.clear();
+
+             render(inner,g);
+
+             clickevent();
+
+             inner.selectAll("g.node")
+                 .attr("title", function(v) { return styleTooltip(g.node(v).label) })
+                 .each(function(v) { $(this).tipsy({ gravity: "w", opacity: 1, html: true }); });
+         }
+
+        });
+        */
+
+    })
+</script>
+<script src="js/demo.js"></script>

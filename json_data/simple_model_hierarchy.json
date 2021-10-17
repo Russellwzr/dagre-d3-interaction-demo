@@ -1,0 +1,1003 @@
+{
+    "children": [
+        {
+            "children": [
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "broadcast_to",
+                            "id": 10493
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "binary.add",
+                            "id": 10490
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "reduce.add",
+                            "id": 10488
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "binary.multiply",
+                            "id": 10486
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "broadcast_to",
+                            "id": 10484
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "broadcast_to",
+                            "id": 10482
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10494
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10491
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10489
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10487
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10485
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10483
+                        }
+                    ],
+                    "relation": [
+                        {
+                            "source": -1,
+                            "target": 10493,
+                            "value": 1
+                        },
+                        {
+                            "source": 10493,
+                            "target": 10494,
+                            "value": 1
+                        },
+                        {
+                            "source": 10489,
+                            "target": 10490,
+                            "value": 1
+                        },
+                        {
+                            "source": 10494,
+                            "target": 10490,
+                            "value": 1
+                        },
+                        {
+                            "source": 10490,
+                            "target": 10491,
+                            "value": 1
+                        },
+                        {
+                            "source": 10487,
+                            "target": 10488,
+                            "value": 1
+                        },
+                        {
+                            "source": 10488,
+                            "target": 10489,
+                            "value": 1
+                        },
+                        {
+                            "source": 10483,
+                            "target": 10486,
+                            "value": 1
+                        },
+                        {
+                            "source": 10485,
+                            "target": 10486,
+                            "value": 1
+                        },
+                        {
+                            "source": 10486,
+                            "target": 10487,
+                            "value": 1
+                        },
+                        {
+                            "source": -1,
+                            "target": 10484,
+                            "value": 1
+                        },
+                        {
+                            "source": 10484,
+                            "target": 10485,
+                            "value": 1
+                        },
+                        {
+                            "source": -1,
+                            "target": 10482,
+                            "value": 1
+                        },
+                        {
+                            "source": 10482,
+                            "target": 10483,
+                            "value": 1
+                        }
+                    ],
+                    "name": "Model/None/linear2",
+                    "id": 2
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "broadcast_to",
+                            "id": 10480
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "binary.maximum",
+                            "id": 10477
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "array",
+                            "id": 10475
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10481
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10476
+                        }
+                    ],
+                    "relation": [
+                        {
+                            "source": 10476,
+                            "target": 10480,
+                            "value": 1
+                        },
+                        {
+                            "source": 10480,
+                            "target": 10481,
+                            "value": 1
+                        },
+                        {
+                            "source": -1,
+                            "target": 10477,
+                            "value": 1
+                        },
+                        {
+                            "source": 10481,
+                            "target": 10477,
+                            "value": 1
+                        },
+                        {
+                            "source": 10477,
+                            "target": -2,
+                            "value": 1
+                        },
+                        {
+                            "source": 10475,
+                            "target": 10476,
+                            "value": 1
+                        }
+                    ],
+                    "name": "Model/None/relu1",
+                    "id": 3
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "broadcast_to",
+                            "id": 10473
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "binary.add",
+                            "id": 10470
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "reduce.add",
+                            "id": 10468
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "binary.multiply",
+                            "id": 10466
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "broadcast_to",
+                            "id": 10464
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10474
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10469
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10467
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10465
+                        }
+                    ],
+                    "relation": [
+                        {
+                            "source": -1,
+                            "target": 10473,
+                            "value": 1
+                        },
+                        {
+                            "source": 10473,
+                            "target": 10474,
+                            "value": 1
+                        },
+                        {
+                            "source": 10469,
+                            "target": 10470,
+                            "value": 1
+                        },
+                        {
+                            "source": 10474,
+                            "target": 10470,
+                            "value": 1
+                        },
+                        {
+                            "source": 10470,
+                            "target": -2,
+                            "value": 1
+                        },
+                        {
+                            "source": 10467,
+                            "target": 10468,
+                            "value": 1
+                        },
+                        {
+                            "source": 10468,
+                            "target": 10469,
+                            "value": 1
+                        },
+                        {
+                            "source": -1,
+                            "target": 10466,
+                            "value": 1
+                        },
+                        {
+                            "source": 10465,
+                            "target": 10466,
+                            "value": 1
+                        },
+                        {
+                            "source": 10466,
+                            "target": 10467,
+                            "value": 1
+                        },
+                        {
+                            "source": -1,
+                            "target": 10464,
+                            "value": 1
+                        },
+                        {
+                            "source": 10464,
+                            "target": 10465,
+                            "value": 1
+                        }
+                    ],
+                    "name": "Model/None/linear1",
+                    "id": 4
+                },
+                {
+                    "children": [],
+                    "relation": [],
+                    "name": "",
+                    "id": 10478
+                },
+                {
+                    "children": [],
+                    "relation": [],
+                    "name": "",
+                    "id": 10471
+                }
+            ],
+            "relation": [
+                {
+                    "source": -1,
+                    "target": 2,
+                    "value": 2
+                },
+                {
+                    "source": 10478,
+                    "target": 2,
+                    "value": 1
+                },
+                {
+                    "source": 10471,
+                    "target": 3,
+                    "value": 1
+                },
+                {
+                    "source": 3,
+                    "target": 10478,
+                    "value": 1
+                },
+                {
+                    "source": -1,
+                    "target": 4,
+                    "value": 3
+                },
+                {
+                    "source": 4,
+                    "target": 10471,
+                    "value": 1
+                }
+            ],
+            "name": "Model/None",
+            "id": 1
+        },
+        {
+            "children": [
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "broadcast_to",
+                            "id": 10462
+                        }
+                    ],
+                    "relation": [
+                        {
+                            "source": -1,
+                            "target": 10462,
+                            "value": 1
+                        },
+                        {
+                            "source": 10462,
+                            "target": -2,
+                            "value": 1
+                        }
+                    ],
+                    "name": "Model/model/linear1",
+                    "id": 6
+                },
+                {
+                    "children": [],
+                    "relation": [],
+                    "name": "",
+                    "id": 10463
+                }
+            ],
+            "relation": [
+                {
+                    "source": -1,
+                    "target": 6,
+                    "value": 1
+                },
+                {
+                    "source": 6,
+                    "target": 10463,
+                    "value": 1
+                },
+                {
+                    "source": 10463,
+                    "target": -2,
+                    "value": 1
+                }
+            ],
+            "name": "Model/model",
+            "id": 5
+        },
+        {
+            "children": [],
+            "relation": [],
+            "name": "unary.cast",
+            "id": 10460
+        },
+        {
+            "children": [],
+            "relation": [],
+            "name": "array",
+            "id": 10458
+        },
+        {
+            "children": [
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "binary.subtract",
+                            "id": 10456
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "array",
+                            "id": 10454
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "random",
+                            "id": 10452
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "broadcast_to",
+                            "id": 10450
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "binary.divide",
+                            "id": 10447
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "array",
+                            "id": 10445
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "broadcast_to",
+                            "id": 10443
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "binary.subtract",
+                            "id": 10440
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "array",
+                            "id": 10438
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "random",
+                            "id": 10436
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "broadcast_to",
+                            "id": 10434
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "binary.subtract",
+                            "id": 10431
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "array",
+                            "id": 10429
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "random",
+                            "id": 10427
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "broadcast_to",
+                            "id": 10425
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "binary.divide",
+                            "id": 10422
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "array",
+                            "id": 10420
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "broadcast_to",
+                            "id": 10418
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "binary.subtract",
+                            "id": 10415
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "array",
+                            "id": 10413
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "random",
+                            "id": 10411
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10455
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10453
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10451
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10446
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10444
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10441
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10439
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10437
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10435
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10430
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10428
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10426
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10421
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10419
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10416
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10414
+                        },
+                        {
+                            "children": [],
+                            "relation": [],
+                            "name": "",
+                            "id": 10412
+                        }
+                    ],
+                    "relation": [
+                        {
+                            "source": 10453,
+                            "target": 10456,
+                            "value": 1
+                        },
+                        {
+                            "source": 10455,
+                            "target": 10456,
+                            "value": 1
+                        },
+                        {
+                            "source": 10456,
+                            "target": -2,
+                            "value": 1
+                        },
+                        {
+                            "source": 10454,
+                            "target": 10455,
+                            "value": 1
+                        },
+                        {
+                            "source": 10452,
+                            "target": 10453,
+                            "value": 1
+                        },
+                        {
+                            "source": 10446,
+                            "target": 10450,
+                            "value": 1
+                        },
+                        {
+                            "source": 10450,
+                            "target": 10451,
+                            "value": 1
+                        },
+                        {
+                            "source": 10441,
+                            "target": 10447,
+                            "value": 1
+                        },
+                        {
+                            "source": 10451,
+                            "target": 10447,
+                            "value": 1
+                        },
+                        {
+                            "source": 10447,
+                            "target": -2,
+                            "value": 1
+                        },
+                        {
+                            "source": 10445,
+                            "target": 10446,
+                            "value": 1
+                        },
+                        {
+                            "source": 10439,
+                            "target": 10443,
+                            "value": 1
+                        },
+                        {
+                            "source": 10443,
+                            "target": 10444,
+                            "value": 1
+                        },
+                        {
+                            "source": 10437,
+                            "target": 10440,
+                            "value": 1
+                        },
+                        {
+                            "source": 10444,
+                            "target": 10440,
+                            "value": 1
+                        },
+                        {
+                            "source": 10440,
+                            "target": 10441,
+                            "value": 1
+                        },
+                        {
+                            "source": 10438,
+                            "target": 10439,
+                            "value": 1
+                        },
+                        {
+                            "source": 10436,
+                            "target": 10437,
+                            "value": 1
+                        },
+                        {
+                            "source": 10430,
+                            "target": 10434,
+                            "value": 1
+                        },
+                        {
+                            "source": 10434,
+                            "target": 10435,
+                            "value": 1
+                        },
+                        {
+                            "source": 10428,
+                            "target": 10431,
+                            "value": 1
+                        },
+                        {
+                            "source": 10435,
+                            "target": 10431,
+                            "value": 1
+                        },
+                        {
+                            "source": 10431,
+                            "target": -2,
+                            "value": 1
+                        },
+                        {
+                            "source": 10429,
+                            "target": 10430,
+                            "value": 1
+                        },
+                        {
+                            "source": 10427,
+                            "target": 10428,
+                            "value": 1
+                        },
+                        {
+                            "source": 10421,
+                            "target": 10425,
+                            "value": 1
+                        },
+                        {
+                            "source": 10425,
+                            "target": 10426,
+                            "value": 1
+                        },
+                        {
+                            "source": 10416,
+                            "target": 10422,
+                            "value": 1
+                        },
+                        {
+                            "source": 10426,
+                            "target": 10422,
+                            "value": 1
+                        },
+                        {
+                            "source": 10422,
+                            "target": -2,
+                            "value": 1
+                        },
+                        {
+                            "source": 10420,
+                            "target": 10421,
+                            "value": 1
+                        },
+                        {
+                            "source": 10414,
+                            "target": 10418,
+                            "value": 1
+                        },
+                        {
+                            "source": 10418,
+                            "target": 10419,
+                            "value": 1
+                        },
+                        {
+                            "source": 10412,
+                            "target": 10415,
+                            "value": 1
+                        },
+                        {
+                            "source": 10419,
+                            "target": 10415,
+                            "value": 1
+                        },
+                        {
+                            "source": 10415,
+                            "target": 10416,
+                            "value": 1
+                        },
+                        {
+                            "source": 10413,
+                            "target": 10414,
+                            "value": 1
+                        },
+                        {
+                            "source": 10411,
+                            "target": 10412,
+                            "value": 1
+                        }
+                    ],
+                    "name": "Model/Model_init/Linear_init",
+                    "id": 8
+                },
+                {
+                    "children": [],
+                    "relation": [],
+                    "name": "linear2.b",
+                    "id": 10457
+                },
+                {
+                    "children": [],
+                    "relation": [],
+                    "name": "linear2.w",
+                    "id": 10448
+                },
+                {
+                    "children": [],
+                    "relation": [],
+                    "name": "linear1.b",
+                    "id": 10432
+                },
+                {
+                    "children": [],
+                    "relation": [],
+                    "name": "linear1.w",
+                    "id": 10423
+                }
+            ],
+            "relation": [
+                {
+                    "source": 8,
+                    "target": 10432,
+                    "value": 1
+                },
+                {
+                    "source": 8,
+                    "target": 10457,
+                    "value": 1
+                },
+                {
+                    "source": 8,
+                    "target": 10448,
+                    "value": 1
+                },
+                {
+                    "source": 8,
+                    "target": 10423,
+                    "value": 1
+                },
+                {
+                    "source": 10457,
+                    "target": -2,
+                    "value": 1
+                },
+                {
+                    "source": 10448,
+                    "target": -2,
+                    "value": 1
+                },
+                {
+                    "source": 10432,
+                    "target": -2,
+                    "value": 1
+                },
+                {
+                    "source": 10423,
+                    "target": -2,
+                    "value": 1
+                }
+            ],
+            "name": "Model/Model_init",
+            "id": 7
+        },
+        {
+            "children": [],
+            "relation": [],
+            "name": "",
+            "id": 10461
+        },
+        {
+            "children": [],
+            "relation": [],
+            "name": "",
+            "id": 10459
+        }
+    ],
+    "relation": [
+        {
+            "source": 7,
+            "target": 1,
+            "value": 4
+        },
+        {
+            "source": 5,
+            "target": 1,
+            "value": 1
+        },
+        {
+            "source": 10461,
+            "target": 5,
+            "value": 1
+        },
+        {
+            "source": 10459,
+            "target": 10460,
+            "value": 1
+        },
+        {
+            "source": 10460,
+            "target": 10461,
+            "value": 1
+        },
+        {
+            "source": 10458,
+            "target": 10459,
+            "value": 1
+        }
+    ],
+    "name": "Model",
+    "id": 0
+}
